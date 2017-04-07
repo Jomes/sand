@@ -1,6 +1,6 @@
 # sand
-sand is Android library that it  is using JNI to achieve Sobel operator image edge detection. it's easy to build a picture  like sand .
-* [中文文档](http://www.jianshu.com/p/c7524b0125df)
+Sand is Android library that it  is using JNI to achieve Sobel operator image edge detection. it's easy to build a picture  like sand .
+* [中文文档](http://www.jianshu.com/p/d5a551b058c8)
 ## Screenshot
 ![sand](./gif/sand.gif)
 ## Build
@@ -28,3 +28,8 @@ Step 2. Add module dependency build.gradle
 ```
 That's it! 
 
+## How to use
+get new Bitmap from SandPic.class .
+```
+SandPic.getInstance().tramform(originalBitmap,thre,pointNum);
+```
