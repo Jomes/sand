@@ -29,7 +29,33 @@ Step 2. Add module dependency build.gradle
 That's it! 
 
 ## How to use
-get new Bitmap from SandPic.class .
+you can get Bitmap from SandPic class,you need to provide original Bitmap、threshold、pointNum。
 ```
-SandPic.getInstance().tramform(originalBitmap,thre,pointNum);
+Bitmap bitmap = SandPic.getInstance().tramform(originalBitmap,thre,pointNum);
+
 ```
+there is a important tramform method in the SandPic class. it get pixels array from JNI.
+```
+public Bitmap tramform(Bitmap bitmap,int threshold,int ponitNum ){
+        int width =  bitmap.getWidth();
+        int height = bitmap.getHeight();
+        Bitmap newImage = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(newImage);
+        Paint paint = new Paint();
+        paint.setAntiAlias(false);
+        paint.setStyle(Paint.Style.STROKE);
+        int pixels[] = new int [width*height];
+        bitmap.getPixels(pixels,0,width,0,0,width,height);
+        int[] generate = generate(pixels, width, height, threshold, ponitNum);
+        for (int i = 0, n = generate.length; i + 1 < n; i += 2) {
+                int x = generate[i]>0? generate[i]:0;
+                int y = generate[i+1] >0?generate[i+1]:0 ;
+                int color = bitmap.getPixel(x,y);
+                paint.setColor(color);
+                canvas.drawCircle(x, y, 1, paint);
+            }
+
+        return newImage;
+    }
+```
+
