@@ -28,7 +28,6 @@ Java_jomeslu_com_sandpic_SandPic_generate(JNIEnv *env, jclass type, jintArray pi
     jintArray  temp = env->NewIntArray(size);
     jint *result_temp = env->GetIntArrayElements(temp, NULL);
     jint total_pots = start_pro(pixels,result_temp,size,width,heigth,threshold,ponitNum, true);
-
     jintArray result = env->NewIntArray(total_pots);
     env->SetIntArrayRegion(result, 0, total_pots, result_temp);
     env->ReleaseIntArrayElements(pixels_, pixels, 0);

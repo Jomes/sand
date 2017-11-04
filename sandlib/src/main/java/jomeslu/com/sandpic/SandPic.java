@@ -37,6 +37,13 @@ public class SandPic {
     private static native int[] generate(int[] pixels, int width, int height, int threshold, int ponitNum);
 
 
+    /**
+     * 像素点转换
+     * @param bitmap
+     * @param threshold
+     * @param ponitNum
+     * @return
+     */
     public Bitmap tramform(Bitmap bitmap,int threshold,int ponitNum ){
         int width =  bitmap.getWidth();
         int height = bitmap.getHeight();
