@@ -18,9 +18,13 @@
 // Created by jomeslu on 17-3-28.
 //
 #include "dot.h"
+
 #ifndef SANDPIC_SOBELOPERA_H
 #define SANDPIC_SOBELOPERA_H
-void sobel(const int *pixel, int *total_pot,Dot *dot,int w, int h, int threshold, int point_count);
+
+void
+sobel(const int *pixel, int *total_pot, Dot *dot, int w, int h, int threshold, int point_count);
+
 int get_color(const int *pixel, int w, int h, int x, int y);
 
 int get_x(const int *pixel, int w, int h, int x, int y);

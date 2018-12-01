@@ -25,17 +25,17 @@
 
 #define   LOG_STATUS  1
 #if (LOG_STATUS == 1)
-    #define log_i(tag, ...) __android_log_print(ANDROID_LOG_INFO, tag, __VA_ARGS__)
-    #define log_d(tag, ...) __android_log_print(ANDROID_LOG_DEBUG, tag, __VA_ARGS__)
-    #define log_e(tag, ...) __android_log_print(ANDROID_LOG_ERROR, tag, __VA_ARGS__)
-    #define log_w(tag, ...) __android_log_print(ANDROID_LOG_WARN, tag, __VA_ARGS__)
-    #define log_v(tag, ...) __android_log_print(ANDROID_LOG_VERBOSE, tag, __VA_ARGS__)
+#define log_i(tag, ...) __android_log_print(ANDROID_LOG_INFO, tag, __VA_ARGS__)
+#define log_d(tag, ...) __android_log_print(ANDROID_LOG_DEBUG, tag, __VA_ARGS__)
+#define log_e(tag, ...) __android_log_print(ANDROID_LOG_ERROR, tag, __VA_ARGS__)
+#define log_w(tag, ...) __android_log_print(ANDROID_LOG_WARN, tag, __VA_ARGS__)
+#define log_v(tag, ...) __android_log_print(ANDROID_LOG_VERBOSE, tag, __VA_ARGS__)
 #else
-    #define log_i(tag, ...) NULL
-    #define log_d(tag, ...) NULL
-    #define log_e(tag, ...) NULL
-    #define log_w(tag, ...) NULL
-    #define log_v(tag, ...) NULL
+#define log_i(tag, ...) NULL
+#define log_d(tag, ...) NULL
+#define log_e(tag, ...) NULL
+#define log_w(tag, ...) NULL
+#define log_v(tag, ...) NULL
 #endif
 
 #endif //SANDPIC_LOG_H

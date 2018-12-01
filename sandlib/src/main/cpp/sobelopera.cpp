@@ -32,19 +32,19 @@ int const SOBEL_Y[3][3] = {{-1, -2, -1},
                            {1,  2,  1}};
 
 
-
-void sobel(const int *pixel, int *total_pot,Dot *dot,int w, int h, int threshold, int point_count) {
-    *total_pot =0;
-    int i =0;
+void
+sobel(const int *pixel, int *total_pot, Dot *dot, int w, int h, int threshold, int point_count) {
+    *total_pot = 0;
+    int i = 0;
     for (int y = 1; y < h; ++y) {
         for (int x = 1; x < w; ++x) {
-            int pixelX = get_x(pixel, w, h,x,y);
-            int pixelY = get_y(pixel, w, h,x,y);
+            int pixelX = get_x(pixel, w, h, x, y);
+            int pixelY = get_y(pixel, w, h, x, y);
             int boundary_gray = (int) sqrt(pixelX * pixelX + pixelY * pixelY);
 
-            if(boundary_gray>threshold) {
+            if (boundary_gray > threshold) {
                 i++;
-                if (i<point_count) {
+                if (i < point_count) {
                     *total_pot = i;
                     Dot *d = &(dot[i]);
                     d->x = x;
@@ -55,7 +55,7 @@ void sobel(const int *pixel, int *total_pot,Dot *dot,int w, int h, int threshold
     }
 }
 
-int get_x(const int *pixel, int w, int h,int x, int y) {
+int get_x(const int *pixel, int w, int h, int x, int y) {
     int pixel_x = (
             (SOBEL_X[0][0] * get_color(pixel, w, h, x - 1, y - 1)) +
             (SOBEL_X[0][1] * get_color(pixel, w, h, x, y - 1)) +
@@ -89,7 +89,7 @@ int get_y(const int *pixel, int w, int h, int x, int y) {
     return pixel_Y;
 }
 
-int get_color(const int *pixel, int w, int h, int x, int y){
+int get_color(const int *pixel, int w, int h, int x, int y) {
     if (x >= w || y >= h) {
         return 0;
     }

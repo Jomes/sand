@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar seekbarThreshold;
     private Bitmap mImageBitmap;
     private int mLastProgress;
-    public final int SEEKBAR_STOP_CHANGE_DELTA=5;
+    public final int SEEKBAR_STOP_CHANGE_DELTA = 5;
     private TextView desc;
 
     @Override
@@ -43,21 +43,22 @@ public class MainActivity extends AppCompatActivity {
         mImageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fei, options);
         pic.setImageBitmap(mImageBitmap);
 
-        int w=mImageBitmap.getWidth();
-        int h=mImageBitmap.getHeight();
-        int maxPoint = 1*w*h/2;
-        maxPoint = maxPoint>100000?100000:maxPoint;
+        int w = mImageBitmap.getWidth();
+        int h = mImageBitmap.getHeight();
+        int maxPoint = 1 * w * h / 2;
+        maxPoint = maxPoint > 100000 ? 100000 : maxPoint;
         seekbarPointNum.setMax(maxPoint);
         seekbarPointNum.setOnSeekBarChangeListener(changeListener);
         seekbarThreshold.setOnSeekBarChangeListener(changeListener);
 
-        desc.setText(getString(R.string.action_decs,String.valueOf(seekbarThreshold.getProgress()),String.valueOf(seekbarPointNum.getProgress())));
+        desc.setText(getString(R.string.action_decs, String.valueOf(seekbarThreshold.getProgress()), String.valueOf(seekbarPointNum.getProgress())));
 
     }
+
     private void findViews() {
-        pic = (ImageView)findViewById( R.id.pic );
-        seekbarPointNum = (SeekBar)findViewById( R.id.seekbar_point_num );
-        seekbarThreshold = (SeekBar)findViewById( R.id.seekbar_threshold );
+        pic = (ImageView) findViewById(R.id.pic);
+        seekbarPointNum = (SeekBar) findViewById(R.id.seekbar_point_num);
+        seekbarThreshold = (SeekBar) findViewById(R.id.seekbar_threshold);
         desc = (TextView) findViewById(R.id.desc);
     }
 
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            ObjectAnimator animator = ObjectAnimator.ofInt(seekbarPointNum, "progress", 0,seekbarPointNum.getMax());
+            ObjectAnimator animator = ObjectAnimator.ofInt(seekbarPointNum, "progress", 0, seekbarPointNum.getMax());
             animator.setInterpolator(new LinearInterpolator());
             animator.setDuration(15000);
             animator.start();
@@ -88,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     private SeekBar.OnSeekBarChangeListener changeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void progressChanged() {
         mLastProgress = seekbarPointNum.getProgress();
-        desc.setText(getString(R.string.action_decs,String.valueOf(seekbarThreshold.getProgress()),String.valueOf(seekbarPointNum.getProgress())));
+        desc.setText(getString(R.string.action_decs, String.valueOf(seekbarThreshold.getProgress()), String.valueOf(seekbarPointNum.getProgress())));
         if (!isProess) {
             SandAsyncTask task = new SandAsyncTask();
             int pointNum = seekbarPointNum.getProgress();
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     private class SandAsyncTask extends AsyncTask<Object, Void, Bitmap> {
 
         @Override
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             int pointNum = (int) params[0];
             int thre = (int) params[1];
             Bitmap originalBitmap = (Bitmap) params[2];
-            return SandPic.getInstance().tramform(originalBitmap,thre,pointNum);
+            return SandPic.getInstance().tramform(originalBitmap, thre, pointNum);
         }
 
         @Override

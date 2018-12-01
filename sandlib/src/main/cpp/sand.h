@@ -23,14 +23,15 @@
 
 #include "dot.h"
 
-int start_pro(const int *pixels, int *result,int size, int with, int heigth, int threshold, int point_count,
-               bool random_dot);
+int start_pro(const int *pixels, int *result, int size, int with, int heigth, int threshold,
+              int point_count,
+              bool random_dot);
 
 float random_index();
 
-void generate_radom_dot (const Dot *dot_order,Dot *dot_random,int pot_num ) ;
-void transform_result_arr(const Dot *dot, int *result,int count) ;
+void generate_radom_dot(const Dot *dot_order, Dot *dot_random, int pot_num);
 
+void transform_result_arr(const Dot *dot, int *result, int count);
 
 
 #endif //SANDPIC_SAND_H
